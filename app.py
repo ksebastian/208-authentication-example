@@ -49,6 +49,7 @@ def update_graph(dropdown_value):
     drinks_data = get_drinks_data()
     x_values = list(zip(*drinks_data))[0]
     y_values = list(zip(*drinks_data))[dropdown_value]
+    y_axis_title = 'servings'
     if dropdown_value == 1:
         title_value = 'Beer Servings'
         color_value = 'brown'
@@ -59,17 +60,24 @@ def update_graph(dropdown_value):
         title_value = 'Wine Servings'
         color_value = 'red'
     elif dropdown_value == 4:
-        title_value = 'Total Alcohol(litres)'
+        title_value = 'Total Alcohol'
         color_value = 'yellow'
+        y_axis_title = 'litres'
 
     #x_values = [-3,-2,-1,0,1,2,3]
     #y_values = [x**dropdown_value for x in x_values]
     return {
         'layout': {
             'title': 'Graph of {}'.format(title_value),
+            'xaxis': {
+                'title': 'country'
+            },
+            'yaxis': {
+                'title': '{}'.format(y_axis_title)
+            },
             'margin': {
-                'l': 30,
-                'b': 50,
+                'l': 40,
+                'b': 70,
                 'r': 10,
                 't': 60
             }
